@@ -659,6 +659,7 @@ static void RunMode_DrawChoices(u8 selection)
 
     DrawOptionMenuChoice(gText_RunTypeNormal, 104, YPOS_RUNMODE, styles[0]);
     DrawOptionMenuChoice(gText_RunTypeAuto, GetStringRightAlignXOffset(1, gText_RunTypeAuto, 198), YPOS_RUNMODE, styles[1]);
+}
 
 static void DrawTextOption(void)
 {
