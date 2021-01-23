@@ -745,6 +745,7 @@ bool8 TextPrinterWaitAutoMode(struct TextPrinter *textPrinter)
 
     if (subStruct->autoScrollDelay == 49)
     {
+        subStruct->autoScrollDelay = 0;
         return TRUE;
     }
     else
@@ -757,7 +758,7 @@ bool8 TextPrinterWaitAutoMode(struct TextPrinter *textPrinter)
 bool16 TextPrinterWaitWithDownArrow(struct TextPrinter *textPrinter)
 {
     bool8 result = FALSE;
-    if (gTextFlags.autoScroll != 0)
+    if (gTextFlags.autoScroll != 0 || gSaveBlock2Ptr->optionsTextMode)
     {
         result = TextPrinterWaitAutoMode(textPrinter);
     }
@@ -769,14 +770,14 @@ bool16 TextPrinterWaitWithDownArrow(struct TextPrinter *textPrinter)
             result = TRUE;
             PlaySE(SE_SELECT);
         }
-    }
+    }    
     return result;
 }
 
 bool16 TextPrinterWait(struct TextPrinter *textPrinter)
 {
     bool16 result = FALSE;
-    if (gTextFlags.autoScroll != 0)
+    if (gTextFlags.autoScroll != 0 || gSaveBlock2Ptr->optionsTextMode)
     {
         result = TextPrinterWaitAutoMode(textPrinter);
     }
